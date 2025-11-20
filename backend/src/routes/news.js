@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { getTopStories, getStoryDetails } = require("../utils/hnClient");
 
-// GET /api/news
 router.get("/", async (req, res) => {
   try {
     const topStoryIds = await getTopStories();
