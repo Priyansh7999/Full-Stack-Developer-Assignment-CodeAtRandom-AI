@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
         const userSkills = currentSkills.map(skill => skill.toLowerCase());
 
         // matched skills in both
-        const matchedSkils = requiredSkills.filter(skill => userSkills.includes(skill.toLowerCase()));
+        const matchedSkills = requiredSkills.filter(skill => userSkills.includes(skill.toLowerCase()));
 
         // missing skills
         const missingSkills = requiredSkills.filter(skill => !userSkills.includes(skill.toLowerCase()));
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 
         const response = {
             targetRole,
-            matchedSkils,
+            matchedSkills,
             missingSkills,
             recommendation: recommended,
             learningOrder: missingSkills

@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/skill-gaps', skillGapRoutes);
+app.use('/api/skill-gap', skillGapRoutes);
 app.use('/api/roadmap', roadmapRoutes);
 app.use("/api/news", newsRoutes);
 
