@@ -1,13 +1,31 @@
 const express = require("express");
+const axios = require("axios");
+
 const router = express.Router();
-const { getTopStories, getStoryDetails } = require("../utils/hnClient");
+const BASE_URL = "https://hacker-news.firebaseio.com/v0";
+
+async function getTopStories() {
+  const { data } = await axios.get(`${BASE_URL}/topstories.json`);
+  return data.slice(0, 5);
+}
+
+async function getStoryDetails(id) {
+  const { data } = await axios.get(`${BASE_URL}/item/${id}.json`);
+  return {
+    id: data.id,
+    title: data.title,
+    url: data.url,
+    score: data.score,
+    time: data.time,
+    type: data.type,
+    by: data.by,
+  };
+}
 
 router.get("/", async (req, res) => {
   try {
     const topStoryIds = await getTopStories();
-
-    const storyPromises = topStoryIds.map((id) => getStoryDetails(id));
-    const stories = await Promise.all(storyPromises);
+    const stories = await Promise.all(topStoryIds.map(getStoryDetails));
 
     return res.json({
       count: stories.length,
@@ -15,9 +33,7 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     console.error("HackerNews API Error:", err);
-    res.status(500).json({
-      error: "Failed to fetch news",
-    });
+    res.status(500).json({ error: "Failed to fetch news" });
   }
 });
 

@@ -27,14 +27,10 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-center tracking-tight text-gray-200">
           Career Path Analyzer
         </h1>
-
-        <p className="mt-2 text-gray-500 text-center">
-          Start by entering your career goal and skills.
-        </p>
-
       </div>
 
-      <div className="mx-auto flex flex-col w-3/4 mt-8 space-y-6 border-2 border-gray-200 p-15 rounded-2xl">
+      <div className="mx-auto flex flex-col w-3/4 mt-2 space-y-6 border-2 border-gray-200 px-5 py-10 rounded-2xl">
+        <p className="text-gray-900 font-bold text-center text-2xl">Start by entering your career goal and skills.</p>
         <div className="flex flex-col">
           <label className="mb-1 font-medium text-gray-800">
             Target Position
