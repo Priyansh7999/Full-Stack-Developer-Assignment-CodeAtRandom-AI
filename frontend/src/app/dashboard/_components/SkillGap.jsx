@@ -33,7 +33,7 @@ function SkillGap({ position, skills }) {
   return (
     <div className="flex flex-col gap-6 text-xl">
       <div>
-        <p className="font-semibold mb-2 text-gray-800">Matched Skills:</p>
+        <p className="text-2xl font-bold mb-4">Matched Skills:</p>
         <div className="flex flex-wrap gap-2">
           {skillGapData?.matchedSkills?.map((skill, index) => (
             <span
@@ -47,7 +47,7 @@ function SkillGap({ position, skills }) {
       </div>
 
       <div>
-        <p className="font-semibold mb-2 text-gray-800">Missing Skills:</p>
+        <p className="text-2xl font-bold mb-4">Missing Skills:</p>
         <div className="flex flex-wrap gap-2">
           {skillGapData?.missingSkills?.map((skill, index) => (
             <span
@@ -61,7 +61,7 @@ function SkillGap({ position, skills }) {
       </div>
 
       <div>
-        <p className="font-semibold mb-2 text-gray-800">Recommendation:</p>
+        <p className="text-2xl font-bold mb-4">Recommendation:</p>
         <p
           className={
             skillGapData?.missingSkills?.length === 0
@@ -74,7 +74,7 @@ function SkillGap({ position, skills }) {
       </div>
 
       <div>
-        <p className="font-semibold mb-2 text-gray-800">Suggested Learning Order:</p>
+        <p className="text-2xl font-bold mb-4">Suggested Learning Order:</p>
         <div className="flex flex-wrap gap-2">
           {skillGapData?.learningOrder?.map((skill, index) => (
             <span

@@ -24,11 +24,11 @@ function Dashboard() {
       </div>
   
       <div>
-        <h1 className='text-3xl font-bold p-3 border-b'>{position.toUpperCase()}</h1>
+        <h1 className='text-3xl font-bold p-3'>{position.toUpperCase()}</h1>
       </div>
 
       <div className='flex'>
-        <div className='w-3/5 border-r p-5'>
+        <div className='w-3/5 p-5'>
           <SkillGap position={position} skills={skills}/>
         </div>
 
@@ -36,7 +36,7 @@ function Dashboard() {
           <Roadmap position={position} />
         </div>
       </div>
-      <div>
+      <div className='border-t mt-5'>
         <TechNews />
       </div>
        <div className="bg-accent-foreground ">
