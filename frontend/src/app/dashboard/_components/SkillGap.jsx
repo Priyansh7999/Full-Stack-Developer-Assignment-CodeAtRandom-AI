@@ -35,7 +35,7 @@ function SkillGap({ position, skills }) {
       <div>
         <p className="text-2xl font-bold mb-4">Matched Skills:</p>
         <div className="flex flex-wrap gap-2">
-          {skillGapData?.matchedSkills.length>0 ? skillGapData?.matchedSkills?.map((skill, index) => (
+          {skillGapData?.matchedSkills ? skillGapData?.matchedSkills?.map((skill, index) => (
             <span
               key={index}
               className="px-3 py-2 bg-gray-900 text-white rounded-md text-xs"
@@ -49,7 +49,7 @@ function SkillGap({ position, skills }) {
       <div>
         <p className="text-2xl font-bold mb-4">Missing Skills:</p>
         <div className="flex flex-wrap gap-2">
-          { skillGapData?.missingSkills?.length>0 ? skillGapData?.missingSkills?.map((skill, index) => (
+          { skillGapData?.missingSkills ? skillGapData?.missingSkills?.map((skill, index) => (
             <span
               key={index}
               className="px-3 py-2 bg-red-600 text-white rounded-md text-xs"
