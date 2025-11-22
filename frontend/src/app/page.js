@@ -35,13 +35,17 @@ export default function Home() {
           <label className="mb-1 font-medium text-gray-800">
             Target Position
           </label>
-          <input
-            type="text"
-            placeholder="ex. Frontend Developer"
+          <select
             value={position}
             onChange={(e) => setPosition(e.target.value)}
-            className="p-3 border text-gray-950 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black/60 transition-all"
-          />
+            className="p-3 border text-gray-950 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black/60 transition-all bg-white"
+          >
+            <option value="" disabled>Select Role</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Data Analyst">Data Analyst</option>
+          </select>
+
         </div>
 
         <div className="flex flex-col">
