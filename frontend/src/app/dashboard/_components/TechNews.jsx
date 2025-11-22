@@ -6,17 +6,36 @@ function TechNews() {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         async function fetchNews() {
-            try {
-                setLoading(true);
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news`);
-                const data = await response.json();
-                setNews(data);
-                setLoading(false);
-                console.log(data);
-            } catch (error) {
-                console.error("Error fetching news:", error);
+                try {
+                    setLoading(true);
+                    const base = process.env.NEXT_PUBLIC_API_URL || "";
+                    const url = `${base}/api/news`.replace(/(^\/)?undefined/, "");
+                    const response = await fetch(url);
+                    let data = null;
+                    try {
+                        data = await response.json();
+                    } catch (err) {
+                        console.error("Invalid JSON from news endpoint:", err);
+                        data = { stories: [] };
+                    }
+
+                    if (!data || !data.stories) {
+                        if (Array.isArray(data)) {
+                            data = { stories: data };
+                        } else {
+                            data = { stories: [] };
+                        }
+                    }
+
+                    setNews(data);
+                    setLoading(false);
+                    console.log(data);
+                } catch (error) {
+                    console.error("Error fetching news:", error);
+                    setNews({ stories: [] });
+                    setLoading(false);
+                }
             }
-        }
         fetchNews();
     }, []);
 
