@@ -9,22 +9,20 @@ router.post('/', (req, res) => {
         if (!targetRole || !currentSkills) {
             return res.status(400).json({ error: "targetRole and currentSkills are required" });
         }
-        // required skills for the target role
         const requiredSkills = skillData[targetRole];
 
         if (!requiredSkills) {
             return res.status(404).json({ error: "Target role not found" });
         }
-        // user skills in lowercase
         const userSkills = currentSkills.map(skill => skill.toLowerCase());
 
-        // matched skills in both
+     
         const matchedSkills = requiredSkills.filter(skill => userSkills.includes(skill.toLowerCase()));
 
-        // missing skills
+       
         const missingSkills = requiredSkills.filter(skill => !userSkills.includes(skill.toLowerCase()));
 
-        // recommendation
+      
         const recommended = missingSkills.length > 0 ? 'Consider learning ' + missingSkills.join(', ') + ' to bridge the skill gap.' : 'You have all the required skills for this role.';
 
         const response = {
